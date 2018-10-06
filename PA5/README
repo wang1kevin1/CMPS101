@@ -1,0 +1,128 @@
+//--------------------------------------------------------------
+//  Kevin Wang
+//  kwang43@ucsc.edu
+//  PA_5
+//
+//  README
+//--------------------------------------------------------------
+
+README
+- List.c
+- List.h
+- Graph.c
+- Graph.h
+- GraphTest.c
+- FindComponents.c
+- Makefile
+
+List.c
+ * A bi-directional queue in the form of a doubly linked list. The user of this
+ * interface has precise control over where in the list each element is
+ * inserted. The user can access elements by their integer index (position in
+ * the list), and search for elements in the list. A list has two ends referred
+ * to as "front" and "back" respectively. It pair will be used by the client to
+ * traverse the list in either direction. Each list element is associated with
+ * an index ranging from 0 (front) to n-1 (back), where n is the length of the
+ * list.
+ * 
+ * Note that it is a valid state for this ADT to have no distinguished element
+ * (i.e. the cursor index may be undefined or "off the list") which is in fact
+ * its default state. Thus the set of "mathematical structures" for this ADT
+ * consists of all finite sequences of integers in which at most one element is
+ * underscored.
+ * 
+ * Contains a private doubly linked list class which itself contains fields for 
+ * an integer (the data), and two Node references (the previous and next Nodes,
+ * respectively) which may be null.
+
+
+List.h
+ * Header file for List.c
+ *
+ * List newList(void);
+ * void freeList(List* pL);
+ * int length(List L);
+ * int index(List L);
+ * int front(List L);
+ * int back(List L);
+ * int get(List L);
+ * int equals(List A, List B);
+ * void clear(List L);
+ * void moveFront(List L);
+ * void moveBack(List L);
+ * void movePrev(List L);
+ * void moveNext(List L);
+ * void prepend(List L, int data);
+ * void append(List L, int data);
+ * void insertBefore(List L, int data);
+ * void insertAfter(List L, int data);
+ * void deleteFront(List L);
+ * void deleteBack(List L);
+ * void delete(List L);
+ * void printList(FILE* out, List L);
+ * List copyList(List L);
+
+ 
+Graph.c
+ * A graph representation in the form of a matrix of doubly linked adjacency 
+ * lists. The user of this interface may create a graph by adding directed 
+ * or undirected edges. Each graph element is also defined by its order (number
+ * of vertices), n, and its size (number of edges). Note that identical edges 
+ * (more than one edge (u,v)) are disregarded. The user can also choose to run 
+ * Depth-First Search on the graph object.
+ * 
+ * Includes the List ADT (List.c) a bi-directional queue in the form of a 
+ * doubly linked list.
+
+
+Graph.h
+ * Header file for Graph.c
+ * 
+ * Graph newGraph(int n);
+ * void freeGraph(Graph* pG);
+ * int getOrder(Graph G);
+ * int getSize(Graph G);
+ * int getParent(Graph G, int u);
+ * int getDiscover(Graph G, int u);
+ * int getFinish(Graph G, int u);
+ * void makeNull(Graph G);
+ * void addEdge(Graph G, int u, int v);
+ * void addArc(Graph G, int u, int v);
+ * void DFS(Graph G, List S);
+ * Graph transpose(Graph G);
+ * Graph copyGraph(Graph G);
+ * void printGraph(FILE* out , Graph G);
+ * 
+ * private void addNeighbor(List L, int x);
+ *   Adds vertex x to the adjacency List L. Private helper procedure 
+ *   for addEdge() and addArc().
+ * private void Visit(Graph G, List S, int u, int* time);
+ *   Recursive helper function for DFS(). 'Visits' the vertex as a part of
+ *   Depth-First Search and sets the color, parent, discover time and finish
+ *   time of each vertex of G accordingly.
+ *   Pre: 0 < u < getOrder(G) + 1, *time < 2 * getOrder(G) + 1
+
+
+GraphTest.c
+ * Test file for Graph ADT based off of 'ModelGraphTest.c' taken from:
+ * www.github.com/legendddhgf/
+ *         cmps101-pt.s18.grading/blob/master/pa5/ModelGraphTest.c
+ 
+
+FindComponent.c
+ * This program takes two command line arguments giving the names of an input
+ * file and an output file. The input contains the Graph and Path information.
+ * FindPath.java reads the input file, initializes and builds the array of 
+ * adjacency List representation of Graph G, then finds the Strongly Connected
+ * Components of Graph G and prints them in topologically sorted order to 'out'.
+ 
+
+Makefile
+#  Makefile taken and modified from: 
+#  https://classes.soe.ucsc.edu/cmps101/Spring18/Examples/pa5/Makefile
+#
+#  make                     makes FindComponent
+#  make GraphTest           makes GraphTest
+#  make clean               removes binaries
+#  make checkFind           tests FindComponent for memory leaks on in3
+#  make checkTest           tests GraphTest for memory leaks
