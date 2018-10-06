@@ -1,0 +1,75 @@
+//--------------------------------------------------------------
+//  Kevin Wang
+//  kwang43@ucsc.edu
+//  PA_3
+//
+//  README
+//--------------------------------------------------------------
+
+Sparse.java
+ * This program takes two command line arguments giving the names of an input
+ * file and an output file. The input contains the Matrix and Entry information.
+ * Sparse.java reads the input file, initializes and builds the Array of Lists
+ * representation of the matrices A and B, then calculates and prints the
+ * following matrices to the output file: 
+ * A
+ * B
+ * (1.5)A
+ * A + B
+ * A + A
+ * B - A
+ * A - A
+ * Transpose of A
+ * A * B
+ * B * B
+ 
+ 
+Matrix.java
+ * A matrix as an array of Lists of Entry Objects, maintained in column sorted
+ * order. The user of this interface can access elements by their integer
+ * indices (column and row) and edit them. The programs allow the performance of
+ * a variety of Matrix operations taking advantage of their "sparseness". A
+ * matrix can be defined as "sparse" if the number of non-zero entries (NNZs) is
+ * small compared to the total number of entries, n*n.
+ *
+ * Contains a private class which encapsulates the column and value information
+ * corresponding to a matrix entry. Entry has two fields that store types 'int'
+ * and 'double', respectively.
+
+
+List.java
+ * A bi-directional queue in the form of a doubly linked list. The user of this
+ * interface has precise control over where in the list each element is
+ * inserted. The user can access elements by their integer index (position in
+ * the list), and search for elements in the list. A list has two ends referred
+ * to as "front" and "back" respectively. It pair will be used by the client to
+ * traverse the list in either direction. Each list element is associated with
+ * an index ranging from 0 (front) to n-1 (back), where n is the length of the
+ * list.
+ * 
+ * Note that it is a valid state for this ADT to have no distinguished element
+ * (i.e. the cursor index may be undefined or "off the list") which is in fact
+ * its default state. Thus the set of "mathematical structures" for this ADT
+ * consists of all finite sequences of Objects in which at most one element is
+ * underscored.
+ *
+ * Contains a private doubly linked list class which itself contains fields for an Object
+ * (the data), and two Node references (the previous and next Nodes,
+ * respectively) which may be null.
+ 
+ 
+MatrixTest.java
+ * MatrixTest.java - Taken and slightly modified from...
+ * https://github.com/legendddhgf/cmps101-pt.s18.grading/blob/master/pa3/ModelMatrixTest.java
+ 
+ 
+ListTest.java
+ * ListTest.java - Taken and slightly modified from...
+ * https://github.com/legendddhgf/cmps101-pt.s18.grading/blob/master/pa3/ModelListTest.java
+ 
+ 
+Makefile
+ # Makefile - Compiles all .java files in the current directory and creates 
+ # an executable jar file called Sparse.
+ 
+README
