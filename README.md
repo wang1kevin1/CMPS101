@@ -1,1 +1,1 @@
-# CMPS101
+# CMPS101: Data Structures
